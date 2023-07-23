@@ -41,13 +41,14 @@ def get_vecs(sentences: list[str]) -> np.ndarray:
 
 dbman = schema.DBManager("meta.db")
 
-START_DATE = datetime(2004, 1, 1)
+START_DATE = datetime(2001, 2, 1)
 END_DATE = datetime(2005, 12, 31)
 
 # How many articles to embed at oncc
 BATCH_SIZE = 64
 
-# NOTE: Hacking to get the ix data again
+# NOTE: Hacky comments below because I'm an idiot who deleted the .commit lines
+# without realizing
 
 
 # Fetching the dates
@@ -60,14 +61,17 @@ def main_loop():
     for ix, date in enumerate(dates):
         print(f"{ix + 1}/{len(dates)}")
         # Make the indexes
+        """
         abs_ix = AnnoyIndex(EMBED_LENGTH, "angular")
         head_ix = AnnoyIndex(EMBED_LENGTH, "angular")
         par_ix = AnnoyIndex(EMBED_LENGTH, "angular")
+        """
         start_time = datetime.now()
         # Get the data
         data = nyt.archive_metadata(date)
         # Get the embeddings and update the indexes
         for ix, article in tqdm(enumerate(data), total=len(data)):
+            """
             # Get each embedding and add to index
             abs_emb = get_vec(article["abstract"])
             abs_ix.add_item(ix, abs_emb)
@@ -75,6 +79,7 @@ def main_loop():
             head_ix.add_item(ix, head_emb)
             par_emb = get_vec(article["lead_paragraph"])
             par_ix.add_item(ix, par_emb)
+            """
             # Add the article metadata to the DB so it can be retrieved later
             meta = schema.Article(
                 id=article["_id"],
@@ -90,6 +95,7 @@ def main_loop():
         diff = end_time - start_time
         if diff.seconds < 5:
             time.sleep(diff.seconds)
+        """
         # Build and save the models
         model_name = f"{util.month_to_str(date)}.ann"
         abs_ix.build(NUM_TREES, n_jobs=-1)
@@ -98,6 +104,7 @@ def main_loop():
         head_ix.save(f"models/head/h_{model_name}")
         par_ix.build(NUM_TREES, n_jobs=-1)
         par_ix.save(f"models/par/p_{model_name}")
+        """
 
 
 if __name__ == "__main__":
