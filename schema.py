@@ -38,7 +38,7 @@ class DBManager:
         )
         self.con.commit()
 
-    def add_article(self, article: Article):
+    def add_article(self, article: Article, commit=False):
         """
         Adds an articles metadata to the database
         """
@@ -62,7 +62,8 @@ class DBManager:
                 article.lead_paragraph,
             ],
         )
-        self.con.commit()
+        if commit:
+            self.con.commit()
 
     def get_article_by_month_and_ix(self, month: str, ix: int) -> Union[Article, None]:
         """
