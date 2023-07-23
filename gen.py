@@ -47,6 +47,8 @@ END_DATE = datetime(2005, 12, 31)
 # How many articles to embed at oncc
 BATCH_SIZE = 64
 
+# NOTE: Hacking to get the ix data again
+
 
 # Fetching the dates
 def main_loop():
@@ -83,6 +85,7 @@ def main_loop():
                 lead_paragraph=article["lead_paragraph"],
             )
             dbman.add_article(meta)
+        dbman.con.commit()
         end_time = datetime.now()
         diff = end_time - start_time
         if diff.seconds < 5:
