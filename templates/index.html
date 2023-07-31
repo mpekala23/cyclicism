@@ -9,23 +9,48 @@
       rel="stylesheet"
       href="{{url_for('static',filename='dist/css/output.css')}}"
     />
+    <!-- Use the tinos google font-->
+    <link href="https://fonts.googleapis.com/css2?family=Tinos&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <div class="snap-y snap-mandatory h-screen w-screen overflow-scroll">
+      <div class="snap-start h-screen flex flex-col justify-center p-8">
+        <p class="text-3xl mb-2">CYCLICISM <span class="text-lg">(ˈsɪklɪˌsɪzəm)</span></p>
+        <p class="text-xl">The belief that history repeats itself</p>
+      </div>
+      <div class="snap-start h-screen flex flex-col justify-center p-8">
+        <p class="text-xl">(and not in a good way)</p>
+      </div>
       {% for (old_article, new_article) in results %}
-      <div class="snap-start border-2 h-screen">
-        <div class="h-1/2 p-8">
+      <div class="snap-start h-screen">
+        <div class="h-1/2 p-8 flex flex-col">
           <p class="italic text-sm mb-2">A recent article from {{new_article.date_str}}</h1>
           <p class="font-bold text-2xl">{{new_article.title}}</h1>
-          <p class="text-lg mt-2 mb-4">{{new_article.abstract}}</p>
-          <img src="{{new_article.img_url}}" alt="" /> 
+          <p class="text-md mt-2 mb-4">{{new_article.abstract}}</p>
+          {% if new_article.img_url %}
+          <div class="flex flex-grow overflow-hidden">
+            <img class="w-full h-full object-scale-down" src="{{new_article.img_url}}" alt="" /> 
+          </div> 
+          {% else %}
+          <div class="flex flex-grow overflow-hidden items-center justify-center">
+            <p class="italic">No image found</p>
+          </div>
+          {% endif %}
         </div>
-        <div class="h-1/2 p-8">
-          <p class="italic text-sm pb-2">An old article from {{old_article.date_str}}</h1>
+        <div class="h-1/2 p-8 flex flex-col">
+          <p class="italic text-sm mb-2">An old article from {{old_article.date_str}}</h1>
           <p class="font-bold text-2xl">{{old_article.title}}</h1>
-          <p class="text-lg my-4">{{old_article.abstract}}</p>
-          <img src="{{old_article.img_url}}" alt="" /> 
+          <p class="text-md mt-2 mb-4">{{old_article.abstract}}</p>
+          {% if old_article.img_url %}
+          <div class="flex flex-grow overflow-hidden">
+            <img class="w-full h-full object-scale-down" src="{{old_article.img_url}}" alt="" /> 
+          </div> 
+          {% else %}
+          <div class="flex flex-grow overflow-hidden items-center justify-center">
+            <p class="italic">No image found</p>
+          </div>
+          {% endif %}
         </div>
       </div>
       {% endfor %}

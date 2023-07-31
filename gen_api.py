@@ -127,7 +127,8 @@ dbman = DBManager(DB_FILE)
 print("Showing crazy cynical things...")
 results: list[tuple[FrontendArticle, FrontendArticle]] = []
 
-# FOR TESTING
+"""
+FOR TESTING
 results = [
     (
         FrontendArticle(
@@ -146,8 +147,9 @@ results = [
         ),
     ),
 ]
+"""
 
-for story in tqdm(top_stories[:0]):
+for story in tqdm(top_stories):
     min_article: Union[Article, None] = None
     min_date = ""
     min_dist = float("inf")
@@ -166,14 +168,17 @@ for story in tqdm(top_stories[:0]):
     if min_article is None:
         continue
     full_old_article = nyt.article_search(
-        query=title,
+        query=min_article.headline,
         results=1,
         dates={"begin": datetime(2000, 1, 1), "begin": datetime(2006, 1, 1)},
-    )[0]
+    )
+    full_old_article = full_old_article[0] if len(full_old_article) > 0 else None
+    if full_old_article is None:
+        continue
     old_article = FrontendArticle(
         title=full_old_article["headline"]["main"],
         abstract=full_old_article["abstract"],
-        img_url=full_old_article["multimedia"][0]["url"]
+        img_url="https://static01.nyt.com/" + full_old_article["multimedia"][0]["url"]
         if len(full_old_article["multimedia"]) > 0
         else None,
         article_url=full_old_article["web_url"],
@@ -184,7 +189,7 @@ for story in tqdm(top_stories[:0]):
         abstract=story["abstract"],
         img_url=story["multimedia"][0]["url"] if len(story["multimedia"]) > 0 else None,
         article_url=story["url"],
-        date_str=min_date,
+        date_str=month_to_str(story["created_date"]),
     )
     results.append((old_article, new_article))
 
@@ -217,6 +222,6 @@ class FrontendArticle(NamedTuple):
 {results_str}
 @app.route("/")
 def index():
-    return render_template("index.html", results=results * 10)
+    return render_template("index.html", results=results)
 """
     )

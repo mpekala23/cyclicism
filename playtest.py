@@ -13,11 +13,8 @@ DB_FILE = "meta.db"
 nyt = NYTAPI(API_KEY or "", parse_dates=True)
 
 
-# top_stories = nyt.top_stories()
-# print(top_stories[0])
-
-test = nyt.article_search(query="Glimmers of Sanity in Ukraine", results=1)
-print(test)
+top_stories = nyt.top_stories()
+print(top_stories[0])
 
 
 """
