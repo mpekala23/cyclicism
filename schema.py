@@ -14,6 +14,8 @@ class Article(NamedTuple):
     abstract: str
     headline: str
     lead_paragraph: str
+    img_url: Union[str, None]
+    web_url: str
 
 
 class DBManager:
@@ -38,6 +40,12 @@ class DBManager:
         )
         self.con.commit()
 
+    def begin_transaction(self):
+        self.cur.execute("BEGIN TRANSACTION;")
+
+    def commit_transaction(self):
+        self.con.commit()
+
     def add_article(self, article: Article, commit=False):
         """
         Adds an articles metadata to the database
@@ -49,7 +57,9 @@ class DBManager:
             {article.annoy_ix},
             ?,
             ?,
-            ?
+            ?,
+            ?,
+            ?,
             );
             """
         self.cur.execute(
@@ -60,6 +70,8 @@ class DBManager:
                 article.abstract,
                 article.headline,
                 article.lead_paragraph,
+                article.img_url,
+                article.web_url,
             ],
         )
         if commit:
@@ -85,4 +97,28 @@ class DBManager:
             abstract=raw[3],
             headline=raw[4],
             lead_paragraph=raw[5],
+            img_url=raw[6] or None,
+            web_url=raw[7],
         )
+
+    def add_web_url_to_article(self, id: str, web_url: str):
+        """
+        Add a web url to an article
+        """
+        self.cur.execute(
+            f"""
+            UPDATE article SET web_url='{web_url}' WHERE id='{id}';
+            """
+        )
+        self.con.commit()
+
+    def add_img_url_to_article(self, id: str, img_url: str):
+        """
+        Add an image url to an article
+        """
+        self.cur.execute(
+            f"""
+            UPDATE article SET img_url='{img_url}' WHERE id='{id}';
+            """
+        )
+        self.con.commit()

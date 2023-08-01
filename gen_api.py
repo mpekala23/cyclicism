@@ -127,28 +127,6 @@ dbman = DBManager(DB_FILE)
 print("Showing crazy cynical things...")
 results: list[tuple[FrontendArticle, FrontendArticle]] = []
 
-"""
-FOR TESTING
-results = [
-    (
-        FrontendArticle(
-            title="The title",
-            abstract="The abstract",
-            img_url="https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg",
-            article_url="https://www.nytimes.com/2021/05/02/us/politics/biden-100-days.html",
-            date_str="April 1st, 2004",
-        ),
-        FrontendArticle(
-            title="The title",
-            abstract="The abstract",
-            img_url="https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg",
-            article_url="https://www.nytimes.com/2021/05/02/us/politics/biden-100-days.html",
-            date_str="May 10th, 2023",
-        ),
-    ),
-]
-"""
-
 for story in tqdm(top_stories):
     min_article: Union[Article, None] = None
     min_date = ""
@@ -167,22 +145,12 @@ for story in tqdm(top_stories):
             min_date = date
     if min_article is None:
         continue
-    full_old_article = nyt.article_search(
-        query=min_article.headline,
-        results=1,
-        dates={"begin": datetime(2000, 1, 1), "begin": datetime(2006, 1, 1)},
-    )
-    full_old_article = full_old_article[0] if len(full_old_article) > 0 else None
-    if full_old_article is None:
-        continue
     old_article = FrontendArticle(
-        title=full_old_article["headline"]["main"],
-        abstract=full_old_article["abstract"],
-        img_url="https://static01.nyt.com/" + full_old_article["multimedia"][0]["url"]
-        if len(full_old_article["multimedia"]) > 0
-        else None,
-        article_url=full_old_article["web_url"],
-        date_str=min_date,
+        title=min_article.headline,
+        abstract=min_article.abstract,
+        img_url=min_article.img_url,
+        article_url=min_article.web_url,
+        date_str=str_to_month(min_date).strftime("%B %Y"),
     )
     new_article = FrontendArticle(
         title=story["title"],

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cyclicism</title>
+    <title>CYCLICISM</title>
     <!-- Include the Tailwind CSS stylesheet -->
     <link
       rel="stylesheet"
@@ -11,49 +11,122 @@
     />
     <!-- Use the tinos google font-->
     <link href="https://fonts.googleapis.com/css2?family=Tinos&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{url_for('static',filename='Icon.png')}}" />
+    <link rel="apple-touch-icon" href="{{url_for('static',filename='Icon.png')}}">
   </head>
 
-  <body>
-    <div class="snap-y snap-mandatory h-screen w-screen overflow-scroll">
-      <div class="snap-start h-screen flex flex-col justify-center p-8">
-        <p class="text-3xl mb-2">CYCLICISM <span class="text-lg">(ˈsɪklɪˌsɪzəm)</span></p>
-        <p class="text-xl">The belief that history repeats itself</p>
-      </div>
-      <div class="snap-start h-screen flex flex-col justify-center p-8">
-        <p class="text-xl">(and not in a good way)</p>
-      </div>
-      {% for (old_article, new_article) in results %}
-      <div class="snap-start h-screen">
-        <div class="h-1/2 p-8 flex flex-col">
-          <p class="italic text-sm mb-2">A recent article from {{new_article.date_str}}</h1>
-          <p class="font-bold text-2xl">{{new_article.title}}</h1>
-          <p class="text-md mt-2 mb-4">{{new_article.abstract}}</p>
-          {% if new_article.img_url %}
-          <div class="flex flex-grow overflow-hidden">
-            <img class="w-full h-full object-scale-down" src="{{new_article.img_url}}" alt="" /> 
-          </div> 
-          {% else %}
-          <div class="flex flex-grow overflow-hidden items-center justify-center">
-            <p class="italic">No image found</p>
+  <body class="bg-gray-50">
+    <div class="">
+      <div class="snap-y snap-mandatory h-screen overflow-scroll scroll-smooth">
+        <div class="sm:p-8 sm:ml-8 md:max-w-screen-sm md:ml-16 lg:max-w-screen-md lg:ml-32 xl:max-w-screen-md xl:ml-64">
+          <div class="snap-start h-screen flex flex-col justify-center p-8">
+            <div class="flex flex-col justify-center flex-grow">
+              <p id="top" class="text-3xl mb-2">CYCLICISM <span class="text-lg">(ˈsɪklɪˌsɪzəm)</span></p>
+              <p class="text-xl">The belief that history repeats itself</p>
+            </div>
+            <a href="https://developer.nytimes.com">
+              <img class="w-48" src="https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344" />
+            </a>
           </div>
-          {% endif %}
-        </div>
-        <div class="h-1/2 p-8 flex flex-col">
-          <p class="italic text-sm mb-2">An old article from {{old_article.date_str}}</h1>
-          <p class="font-bold text-2xl">{{old_article.title}}</h1>
-          <p class="text-md mt-2 mb-4">{{old_article.abstract}}</p>
-          {% if old_article.img_url %}
-          <div class="flex flex-grow overflow-hidden">
-            <img class="w-full h-full object-scale-down" src="{{old_article.img_url}}" alt="" /> 
-          </div> 
-          {% else %}
-          <div class="flex flex-grow overflow-hidden items-center justify-center">
-            <p class="italic">No image found</p>
+          <div class="snap-start h-screen flex flex-col justify-center p-8">
+            <p class="text-xl">(and not in a good way)</p>
           </div>
-          {% endif %}
+          <div class="snap-start h-screen flex flex-col justify-center p-8">
+            <p class="text-2xl">Sure, the news is sensational.</p>
+            <p class="text-3xl pt-2 italic">But don't you feel like you've read it before?</p>
+            <p class="text-xl pt-4">
+              Growing up, I used to love reading the news. Midterm elections, climate change, a kid taming a wild alligator.
+              It was all fascinating. But the news today feels... boring. <span class="italic">Sure</span>,
+              it's sensational, but with almost every article out there, doesn't it feel like you've read it before?
+            </p>
+            <p class="text-xl pt-4">
+              I'm here to show you that you have. Or at least, you've read something semantically very similar (in the vector sense).
+            </p>
+            <p class="text-xl pt-4">
+              Enjoy.
+            </p>
+          </div>
+        </div>
+        <div class="sticky top-0 py-2 bg-gray-50 shadow-sm left-0 w-full">
+          <div class="flex px-8 justify-between items-center sm:ml-8 md:max-w-screen-sm md:ml-16 lg:max-w-screen-md lg:ml-32 xl:max-w-screen-md xl:ml-64">
+            <a href="#top"><p class="text-3xl sm:px-8">CYCLICISM</p></a>
+            <a href="#bottom"><p class="text-xl sm:px-8">About</p></a>
+          </div>
+        </div>
+        <div class="sm:p-8 sm:ml-8 md:max-w-screen-sm md:ml-16 lg:max-w-screen-md lg:ml-32 xl:max-w-screen-md xl:ml-64">
+          {% for (old_article, new_article) in results %}
+          <div class="snap-start h-screen pt-12">
+            <div class="h-1/2 p-8 flex flex-col">
+              <p class="italic text-md mb-2">A recent article from {{new_article.date_str}}</h1>
+              <p class="font-bold text-2xl">{{new_article.title}}</h1>
+              <p class="text-md mt-2 mb-4">{{new_article.abstract}}</p>
+              {% if new_article.img_url %}
+              <div class="flex flex-grow overflow-hidden">
+                <img class="w-full h-full object-scale-down" src="{{new_article.img_url}}" alt="" /> 
+              </div> 
+              {% else %}
+              <div class="flex flex-grow overflow-hidden items-center justify-center">
+                <p class="italic">No image found</p>
+              </div>
+              {% endif %}
+            </div>
+            <div class="h-1/2 p-8 flex flex-col">
+              <p class="italic text-md mb-2">An old article from {{old_article.date_str}}</h1>
+              <p class="font-bold text-2xl">{{old_article.title}}</h1>
+              <p class="text-md mt-2 mb-4">{{old_article.abstract}}</p>
+              {% if old_article.img_url %}
+              <div class="flex flex-grow overflow-hidden">
+                <img class="w-full h-full object-scale-down" src="{{old_article.img_url}}" alt="" /> 
+              </div> 
+              {% else %}
+              <div class="flex flex-grow overflow-hidden items-center justify-center">
+                <p class="italic">No image found</p>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="sm:p-8 sm:ml-8 md:max-w-screen-sm md:ml-16 lg:max-w-screen-md lg:ml-32 xl:max-w-screen-md xl:ml-64">
+          <div class="snap-start h-screen flex flex-col justify-center p-8 overflow-auto">
+            <div class="flex flex-col justify-center flex-grow pt-16">
+              <p id="bottom" class="text-3xl mb-2">About</p>
+              <p class="text-md">
+                This website was created by applying a <a class="underline" href="https://www.sbert.net/#">sentence transformer</a> to
+                the headline and abstract of every article published by <span class="italic">The New York Times</span> between January 1st, 2001 and
+                December 31st, 2005. Every six hours, the page is refreshed by fetching the currently trending articles and applying the same
+                transformation. Similarity is then approximated using <a class="underline" href="https://github.com/spotify/annoy">annoy indexes</a>.
+              </p>
+              <p class="text-3xl mt-8 mb-2">Why 2001-2005?</p>
+              <p class="text-md">
+                I (the omniscent narrator) was born in 2001, and I wanted to see what the world was like when I was
+                too young to open a newspaper and go, <span class="italic">"Huh."</span>
+              </p>
+              <p class="text-md pt-4">
+                Also, ~20 years is an amount of time where most people would say <span class="italic">
+                "That's a long time ago,"</span> but not so long ago that people won't recognize people, places, and events.
+              </p>
+              <p class="text-md pt-4">
+                Want to learn more? Keep scrolling.
+              </p>
+            </div>
+          </div>
+          <div class="snap-start h-screen flex flex-col justify-center p-8 overflow-auto">
+            <div class="flex flex-col justify-center flex-grow pt-16">
+              <p id="bottom" class="text-3xl mb-2">OBLIGATORY BLOG LINK</p>
+              <p class="text-md">
+                <a href="https://mark-pekala.dev" class="underline">Check it out.</a>
+              </p>
+              <p class="text-3xl mt-8 mb-2">But... who are you?</p>
+              <p class="text-md">
+                I'm <a href="https://mark-pekala.dev" class="underline">Mark</a> 🖤, a student at Harvard studying math and
+                computer science. I like data structures and algorithms and have a bit too much free time.
+                Oh, and I'm probably going to graduate soon, if you know any cool places to work. ;)
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      {% endfor %}
-    </div>
+    </div> <!-- End Desktop -->
   </body>
 </html>
