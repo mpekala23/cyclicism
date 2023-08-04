@@ -21,3 +21,10 @@ functions:
     handler: wsgi_handler.handler
     events:
       - http: ANY /
+package:
+  patterns:
+    - "!__pycache__"
+    - "!models"
+    - "!node_modules/**"
+    - "!playground"
+    - "!venv"

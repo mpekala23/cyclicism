@@ -127,7 +127,7 @@ dbman = DBManager(DB_FILE)
 print("Showing crazy cynical things...")
 results: list[tuple[FrontendArticle, FrontendArticle]] = []
 
-for story in tqdm(top_stories):
+for story in tqdm(top_stories[:10]):
     min_article: Union[Article, None] = None
     min_date = ""
     min_dist = float("inf")
@@ -148,7 +148,7 @@ for story in tqdm(top_stories):
     old_article = FrontendArticle(
         title=min_article.headline,
         abstract=min_article.abstract,
-        img_url=min_article.img_url,
+        img_url=min_article.img_url if min_article.img_url != "None" else None,
         article_url=min_article.web_url,
         date_str=str_to_month(min_date).strftime("%B %Y"),
     )
@@ -157,7 +157,7 @@ for story in tqdm(top_stories):
         abstract=story["abstract"],
         img_url=story["multimedia"][0]["url"] if len(story["multimedia"]) > 0 else None,
         article_url=story["url"],
-        date_str=month_to_str(story["created_date"]),
+        date_str=story["created_date"].strftime("%B %Y"),
     )
     results.append((old_article, new_article))
 

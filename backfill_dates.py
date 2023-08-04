@@ -17,7 +17,7 @@ nyt = NYTAPI(API_KEY, parse_dates=True)
 gis = GoogleImagesSearch(GOOGLE_KEY, "a708aeeac07f04808")
 
 
-START_DATE = datetime(2001, 1, 1)
+START_DATE = datetime(2005, 12, 1)
 END_DATE = datetime(2005, 12, 31)
 
 dbman = schema.DBManager("meta.db")
@@ -34,6 +34,10 @@ for date in dates:
     data = nyt.archive_metadata(date)
     dbman.begin_transaction()
     for article in tqdm(data):
+        if random.random() < 0.001:
+            print("COMMITTING EARLY")
+            dbman.commit_transaction()
+            dbman.begin_transaction()
         web_url = article["web_url"]
         dbman.add_web_url_to_article(
             article["_id"],

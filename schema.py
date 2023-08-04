@@ -44,6 +44,7 @@ class DBManager:
         self.cur.execute("BEGIN TRANSACTION;")
 
     def commit_transaction(self):
+        self.cur.execute("END TRANSACTION;")
         self.con.commit()
 
     def add_article(self, article: Article, commit=False):
@@ -105,12 +106,14 @@ class DBManager:
         """
         Add a web url to an article
         """
-        self.cur.execute(
-            f"""
-            UPDATE article SET web_url='{web_url}' WHERE id='{id}';
-            """
-        )
-        self.con.commit()
+        try:
+            self.cur.execute(
+                f"""
+                UPDATE article SET web_url='{web_url}' WHERE id='{id}';
+                """
+            )
+        except Exception as e:
+            pass
 
     def add_img_url_to_article(self, id: str, img_url: str):
         """

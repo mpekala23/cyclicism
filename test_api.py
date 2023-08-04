@@ -16,294 +16,167 @@ class FrontendArticle(NamedTuple):
 results = [
     (
         FrontendArticle(
-            title="The Early Word: Florida Preps for Debate",
-            abstract="Faced with sliding poll numbers in Florida, Rudolph W. Giuliani has been speaking more and more about the economy — sure to be a hot topic at tonight’s Republican debate in Boca Raton.",
-            img_url="None",
-            article_url="https://thecaucus.blogs.nytimes.com/2008/01/24/the-early-word-florida-preps-for-debate/",
-            date_str="06-2001"
+            title="Deal Ends Possibility Of Clinton Indictment",
+            abstract="WASHINGTON—  Bill Clinton and the independent counsel investigating him announced an agreement Friday to clear Mr. Clinton from lingering legal jeopardy in the sexual scandals that marred his presidency, but only at the cost of an embarrassing admission by the president on his last full day in office that he had misled an Arkansas court. ",
+            img_url=None,
+            article_url="https://www.nytimes.com/2001/01/20/news/deal-ends-possibility-of-clinton-indictment.html",
+            date_str="January 2001",
         ),
         FrontendArticle(
-            title="Trump Crushing DeSantis and G.O.P. Rivals, Times/Siena Poll Finds",
-            abstract="The twice-indicted former president leads across nearly every category and region, as primary voters wave off concerns about his escalating legal jeopardy.",
-            img_url="https://static01.nyt.com/images/2023/07/28/multimedia/2023-07-27-july-polls-horserace/2023-07-27-july-polls-horserace-superJumbo-v4.jpg",
-            article_url="https://www.nytimes.com/2023/07/31/us/politics/2024-poll-nyt-siena-trump-republicans.html",
-            date_str="06-2001"
-        )
+            title="Trump, Arraigned on Election Charges, Pleads Not Guilty",
+            abstract="The former president appeared in federal court in Washington after being indicted over his efforts to overturn his defeat in 2020. His first pretrial hearing was set for Aug. 28.",
+            img_url="https://static01.nyt.com/images/2023/08/03/multimedia/03d-trump-pjkc/03d-trump-pjkc-superJumbo.jpg",
+            article_url="https://www.nytimes.com/2023/08/03/us/politics/trump-arraignment-court.html",
+            date_str="August 2023",
+        ),
     ),
     (
         FrontendArticle(
-            title="Protests Spur Surge in Donations, Giving ActBlue Its Biggest Day of the Year",
-            abstract="With money flowing to candidates, bail funds and charities, the Democrats’ online donor platform processed over $60 million between Friday and Monday, a sign of strength for the party.",
-            img_url="https://static01.nyt.com/images/2020/06/04/style/01unrest-donations/merlin_173050722_79a799e1-a17c-4c84-97cd-ce22c60101a6-articleLarge.jpg",
-            article_url="https://www.nytimes.com/2020/06/01/us/politics/donations-protests-actblue-democrats.html",
-            date_str="04-2002"
+            title="Schwarz Jury Asks a Question but Reaches No Verdict on First Day",
+            abstract="Jury in retrial of former New York City police officer Charles Schwarz adjourns after first day of deliberations without verdict; Schwarz faces two perjury charges and two civil rights charges that assert he assisted officer Justin A Volpe in assaulting Abner Louima in bathroom of police station house in 1997; photo (M)",
+            img_url=None,
+            article_url="https://www.nytimes.com/2002/07/10/nyregion/schwarz-jury-asks-a-question-but-reaches-no-verdict-on-first-day.html",
+            date_str="July 2002",
         ),
         FrontendArticle(
-            title="Why Trump Is So Hard to Beat",
-            abstract="The first Times/Siena poll of the G.O.P. primary shows he still commands a seemingly unshakable base of loyal supporters.",
-            img_url="https://static01.nyt.com/images/2023/07/30/upshot/poll-desantis-embed-1690746008551/poll-desantis-embed-1690746008551-superJumbo.png",
-            article_url="https://www.nytimes.com/2023/07/31/upshot/poll-trump-republican-primary.html",
-            date_str="04-2002"
-        )
+            title="Trump’s day in court included another encounter with Jack Smith, but no eye contact.",
+            abstract="This time the seriousness of the charges facing the former president gave the proceedings a sense of historical weight.",
+            img_url="https://static01.nyt.com/images/2023/08/03/multimedia/03trump-blog-scene-fqpg/03trump-blog-scene-fqpg-superJumbo.jpg",
+            article_url="https://www.nytimes.com/2023/08/03/us/politics/trump-court-appearance-arraignment.html",
+            date_str="August 2023",
+        ),
     ),
     (
         FrontendArticle(
-            title="Obama Says Bush and McCain Are ‘Fear Mongering’ in Attacks",
-            abstract="Senator Barack Obama responded to attacks on his foreign policy and tried to turn the tables on his critics.",
-            img_url="https://static01.nyt.com/images/2008/05/17/us/politics/17obama.span.jpg",
-            article_url="https://www.nytimes.com/2008/05/17/us/politics/17obama.html",
-            date_str="02-2004"
+            title="The Senate, the Filibuster and the Judges",
+            abstract="John Prior letter says he is not opposed to filibustering and supports requirement calling for 60 votes to confirm judicial nominees (Mar 29 editorial)",
+            img_url=None,
+            article_url="https://www.nytimes.com/2005/04/04/opinion/the-senate-the-filibuster-and-the-judges-687472.html",
+            date_str="April 2005",
         ),
         FrontendArticle(
-            title="DeSantis Jabs at Trump’s Legal Trouble as He Resets His Campaign",
-            abstract="Ron DeSantis’s remarks to a voter in New Hampshire suggest he may step up his attacks against the man who leads him in national polls by a wide margin.",
-            img_url="https://static01.nyt.com/images/2023/07/30/multimedia/30pol-desantis-qpcg/30pol-desantis-qpcg-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/us/desantis-trump-indictments.html",
-            date_str="02-2004"
-        )
+            title="Four takeaways from Trump’s court appearance.",
+            abstract="A quick proceeding that was mostly straightforward.",
+            img_url="https://static01.nyt.com/images/2023/08/03/multimedia/03trump-arraignment-election-takeaways-02-qgzt/03trump-arraignment-election-takeaways-02-qgzt-superJumbo.jpg",
+            article_url="https://www.nytimes.com/2023/08/03/us/politics/trump-arraignment-takeaways.html",
+            date_str="August 2023",
+        ),
     ),
     (
         FrontendArticle(
-            title="‘Condoleezza Rice’",
-            abstract="“The story of Condoleezza Rice begins at the close of the nineteenth century on a cotton plantation in southeastern Alabama, near the flourishing little town of Union Springs.”",
-            img_url="https://static01.nyt.com/images/2007/12/27/arts/elisabeth-bumiller-190.jpg",
-            article_url="https://www.nytimes.com/2008/01/20/books/chapters/1st-chapter-bumiller-condoleezza-rice.html",
-            date_str="11-2004"
+            title="Democrat Pulls Her Support For Senate Malpractice Bill",
+            abstract="Sen Dianne Fenstein, Democrat who has been working with majority leader Sen Bill Frist and other Republican leaders on compromise measure to limit jury awards in medical malpractice suits, says she is withdrawing her name from legislation in face of American Medical Assn opposition; photo (M)",
+            img_url=None,
+            article_url="https://www.nytimes.com/2003/03/27/us/democrat-pulls-her-support-for-senate-malpractice-bill.html",
+            date_str="March 2003",
         ),
         FrontendArticle(
-            title="Nuts-and-Bolts Conservatism From Nikki Haley",
-            abstract="In her stump speech, the former governor calls for common sense and experience in the White House, leaving crowds wanting more.",
-            img_url="https://static01.nyt.com/images/2023/07/30/multimedia/30pol-haley-fbvj/30pol-haley-fbvj-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/us/politics/nikki-haley-stump-speech.html",
-            date_str="11-2004"
-        )
+            title="For an Ailing Feinstein, a Fight Over the Family Fortune",
+            abstract="As Dianne Feinstein, 90, struggles to function in the Senate, a dispute within her family over control of her late husband’s estate is another difficult chapter at the end of a long career.",
+            img_url="https://static01.nyt.com/images/2023/08/01/multimedia/01NAT-FEINSTEIN-01-lmhg/01NAT-FEINSTEIN-01-lmhg-superJumbo.jpg",
+            article_url="https://www.nytimes.com/2023/08/03/us/feinstein-husband-estate-family-fortune.html",
+            date_str="August 2023",
+        ),
     ),
     (
         FrontendArticle(
-            title="Homeless Camps Are Being Cleared in California. What Happens Next?",
-            abstract="One of the state’s largest homeless encampments was recently shut down in Oakland, but that didn’t stop the problem of homelessness.",
-            img_url="https://static01.nyt.com/images/2023/07/31/multimedia/31nat-homeless-oakland-promo-wbpf/31nat-homeless-oakland-promo-wbpf-articleLarge.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/us/homeless-camp-oakland-california.html",
-            date_str="01-2002"
+            title="2 Men Get Stiff Sentences in China Over Worker Protests",
+            abstract="Two men who promoted large worker protests in northeast China 14 months ago have been given stiff prison sentences, of seven and four years, on charges of subverting the state.",
+            img_url=None,
+            article_url="https://www.nytimes.com/2003/05/09/international/asia/2-men-get-stiff-sentences-in-china-over-worker-protests.html",
+            date_str="May 2003",
         ),
         FrontendArticle(
-            title="Homeless Camps Are Being Cleared in California. What Happens Next?",
-            abstract="One of the state’s largest homeless encampments was recently shut down in Oakland, but that didn’t stop the problem of homelessness.",
-            img_url="https://static01.nyt.com/images/2023/07/31/multimedia/31nat-homeless-oakland-promo-wbpf/31nat-homeless-oakland-promo-wbpf-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/us/homeless-camp-oakland-california.html",
-            date_str="01-2002"
-        )
+            title="Two U.S. Navy Sailors Charged With Helping China",
+            abstract="Prosecutors said the two sailors in California gave Chinese intelligence officers U.S. military secrets and sensitive information.",
+            img_url="https://static01.nyt.com/images/2023/08/03/multimedia/03dc-intel-01a-gwht/03dc-intel-01a-gwht-superJumbo.jpg",
+            article_url="https://www.nytimes.com/2023/08/03/us/politics/navy-sailors-spy-china.html",
+            date_str="August 2023",
+        ),
     ),
     (
         FrontendArticle(
-            title="Scientists Warn of Perilous Climate Shift Within Decades, Not Centuries",
-            abstract="Findings published on Tuesday are likely to replay a debate among climate scientists that started when a draft version of the paper came out last year.",
-            img_url="https://static01.nyt.com/images/2016/03/22/science/22CLIMATE/22CLIMATE-watch308.jpg",
-            article_url="https://www.nytimes.com/2016/03/23/science/global-warming-sea-level-carbon-dioxide-emissions.html",
-            date_str="12-2001"
+            title="Affirmative Action: The Ruling and the Debate",
+            abstract="Elliott Marc Davis letter scores Supreme Court decision on affirmative action; says true equality of opportunity would give preference to underprivileged, deserving students of all colors and creeds (Jun 24 editorial)",
+            img_url=None,
+            article_url="https://www.nytimes.com/2003/06/25/opinion/l-affirmative-action-the-ruling-and-the-debate-258130.html",
+            date_str="June 2003",
         ),
         FrontendArticle(
-            title="A Climate Warning from the Cradle of Civilization",
-            abstract="How extreme temperatures and dwindling water are pushing the Fertile Crescent toward the brink.",
-            img_url="https://static01.nyt.com/images/2023/07/29/multimedia/29iraq-promo-vfpq/29iraq-promo-vfpq-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/29/world/middleeast/iraq-water-crisis-desertification.html",
-            date_str="12-2001"
-        )
+            title="The Next Affirmative Action Battle May Be at West Point",
+            abstract="Students for Fair Admissions won its Supreme Court case against Harvard and the University of North Carolina. Now, it’s focusing on a possible new target: the military academies.",
+            img_url="https://static01.nyt.com/images/2023/08/03/multimedia/03NAT-AFFIRMATIVEACTION-02-glhf/03NAT-AFFIRMATIVEACTION-02-glhf-superJumbo.jpg",
+            article_url="https://www.nytimes.com/2023/08/03/us/affirmative-action-military-academies.html",
+            date_str="August 2023",
+        ),
     ),
     (
         FrontendArticle(
-            title="How Rupert Murdoch’s Empire of Influence Remade the World",
-            abstract="Murdoch and his children have toppled governments on two continents and destabilized the most important democracy on Earth. What do they want?",
-            img_url="https://static01.nyt.com/images/2019/04/07/magazine/07mag-murdoch-promo-image-1/07mag-murdoch-promo-image-1-articleLarge.jpg",
-            article_url="https://www.nytimes.com/interactive/2019/04/03/magazine/rupert-murdoch-fox-news-trump.html",
-            date_str="05-2003"
+            title="CUNY Chief Gives Tenure To Professor In Brooklyn",
+            abstract="City University of New York board overrules Brooklyn College officials and grants tenure to history professor Robert D Johnson; case drew national attention last year when he was denied tenured on ground of being uncollegial (M)",
+            img_url=None,
+            article_url="https://www.nytimes.com/2003/02/25/nyregion/cuny-chief-gives-tenure-to-professor-in-brooklyn.html",
+            date_str="February 2003",
         ),
         FrontendArticle(
-            title="Judge Dismisses Trump’s $475 Million Defamation Suit Against CNN",
-            abstract="The network’s statements were opinion, the ruling said, and did not support a claim of libel and slander.",
-            img_url="https://static01.nyt.com/images/2023/07/30/multimedia/30trump-lawsuit-1-hwlm/30trump-lawsuit-1-hwlm-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/business/media/trump-cnn-lawsuit.html",
-            date_str="05-2003"
-        )
+            title="Texas A&M Agrees to $1 Million Settlement With Journalism Professor",
+            abstract="A university report found that fears of a conservative backlash botched the effort to hire a Black professor, Kathleen McElroy, to run its journalism program.",
+            img_url="https://static01.nyt.com/images/2023/08/03/multimedia/03NAT-TEXAS-AM-wqgz/03NAT-TEXAS-AM-wqgz-superJumbo.jpg",
+            article_url="https://www.nytimes.com/2023/08/03/us/texas-am-mcelroy-settlement.html",
+            date_str="August 2023",
+        ),
     ),
     (
         FrontendArticle(
-            title="The Songs That Get Us Through It",
-            abstract="Featuring music from Mary J. Blige, Olivia Rodrigo, Beach House, Mitski and more.",
-            img_url="https://static01.nyt.com/images/2022/03/13/magazine/13mag-music-promoimage/13mag-music-promoimage-articleLarge-v2.png",
-            article_url="https://www.nytimes.com/interactive/2022/03/11/magazine/best-songs.html",
-            date_str="12-2003"
+            title="Court Allows Universities to Bar Military Recruiters",
+            abstract="Universities may bar military recruiters from their campuses without risking the loss of federal money, a federal appeals court in Philadelphia ruled on Monday.",
+            img_url=None,
+            article_url="None",
+            date_str="November 2004",
         ),
         FrontendArticle(
-            title="Trump Team Creates Legal-Defense Fund to Cover His Allies’ Bills",
-            abstract="With investigations and legal fees piling up, a fund is planned to help witnesses and defendants. The former president’s legal bills are not expected to be included, however.",
-            img_url="https://static01.nyt.com/images/2023/07/30/multimedia/30pol-legalfund-tcfj/30pol-legalfund-tcfj-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/us/politics/trump-legal-defense-fund.html",
-            date_str="12-2003"
-        )
+            title="The College Board Says A.P. Psychology Is ‘Effectively Banned’ in Florida",
+            abstract="The nonprofit said it would not remove a section on gender and sexual orientation, as Florida had requested, and advised districts not to offer the course.",
+            img_url="https://static01.nyt.com/images/2023/08/03/multimedia/03NAT-FLORIDA-01-wlch/03NAT-FLORIDA-01-wlch-superJumbo-v2.jpg",
+            article_url="https://www.nytimes.com/2023/08/03/us/florida-ap-psychology-courses.html",
+            date_str="August 2023",
+        ),
     ),
     (
         FrontendArticle(
-            title="At the Time Warner Center, an Enclave of Powerful Russians",
-            abstract="Wealth that has been accrued in the chaotic capitalism of post-Soviet Russia is a powerful force in the luxury condominium boom that is changing New York.",
-            img_url="https://static01.nyt.com/images/2015/01/16/us/xxRUSSIA1/xxRUSSIA1-watch308.jpg",
-            article_url="https://www.nytimes.com/2015/02/12/nyregion/russia-time-warner-center-andrey-vavilov.html",
-            date_str="11-2002"
+            title="Officers Accused of Lying Face Police Trial",
+            abstract="Police officials have filed disciplinary charges against two officers who are accused of lying under oath to help a fellow officer, Francis X. Livoti, cover up his role in the 1994 choking death of Anthony Baez.    The charges were based on testimony the officers, Mario Erotokritou and Anthony Farnan, gave as defense witnesses at Mr. Livoti's 1998 federal trial, at which he was convicted of violating Mr. Baez's civil rights.  ",
+            img_url=None,
+            article_url="https://www.nytimes.com/2001/04/07/nyregion/officers-accused-of-lying-face-police-trial.html",
+            date_str="April 2001",
         ),
         FrontendArticle(
-            title="Why One Country Is Struggling to Break Away From Russian Gas",
-            abstract="Austria, unlike most European Union countries, is still buying nearly as much natural gas from Russia as it was before the war in Ukraine.",
-            img_url="https://static01.nyt.com/images/2023/07/31/multimedia/00JPaustria-gas-print-zjcl/00austria-gas-01-zjcl-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/31/business/energy-environment/austria-natural-gas-russia.html",
-            date_str="11-2002"
-        )
+            title="6 Ex-Officers Plead Guilty to Civil Rights Charges in Assault on 2 Black Men in Mississippi",
+            abstract="The authorities said that the two men had been handcuffed, beaten and shocked with Tasers. One of the men was also shot in the mouth during a “mock execution,” and a sex toy was forced into the other man’s mouth, federal prosecutors said.",
+            img_url="https://static01.nyt.com/images/2023/08/03/multimedia/03xp-mississippi-lpzf/03xp-mississippi-lpzf-superJumbo.jpg",
+            article_url="https://www.nytimes.com/2023/08/03/us/mississippi-officers-charged-civil-rights.html",
+            date_str="August 2023",
+        ),
     ),
     (
         FrontendArticle(
-            title="Hundreds of New Concertos Bring the World to the Concert Hall",
-            abstract="Dai Fujikura’s new work for shamisen, a three-stringed, fretless Japanese lute, premieres on Saturday.",
-            img_url="https://static01.nyt.com/images/2019/08/03/arts/02SHAMISEN-1/merlin_158733756_81f777fd-9a99-40ab-a994-2fbed4c636e5-articleLarge.jpg",
-            article_url="https://www.nytimes.com/2019/08/01/arts/music/lincoln-center-dai-fujikura-shamisen.html",
-            date_str="12-2005"
+            title="Police Officer Found Guilty In Videotaped Assault Attempt",
+            abstract="Police Officer Charles Dorcent is found guilty of attempted assault of Anthony Carty, but is acquitted of assault in second degree; was videotaped apparently striking Carty, who was in handcuffs after his capture in Brooklyn; Dorcent defense offered testimony that he swung at Carty but hit another officer (M)",
+            img_url=None,
+            article_url="https://www.nytimes.com/2004/03/11/nyregion/police-officer-found-guilty-in-videotaped-assault-attempt.html",
+            date_str="March 2004",
         ),
         FrontendArticle(
-            title="A Trombonist on a Mission to Break Barriers in Classical Music",
-            abstract="Hillary Simms is the first woman to become a member of the American Brass Quintet. She says the field needs more role models.",
-            img_url="https://static01.nyt.com/images/2023/07/31/multimedia/30simms-trombone-1/31simms-trombone-dress-fqkh-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/arts/music/hillary-simms-american-brass-quintet.html",
-            date_str="12-2005"
-        )
-    ),
-    (
-        FrontendArticle(
-            title="North Korea, Wells Fargo, Serena Williams: Your Friday Briefing",
-            abstract="Here’s what you need to know to start your day.",
-            img_url="https://static01.nyt.com/images/2016/09/10/nytnow/09NYTNow-Korea1/09NYTNow-Korea1-hpLarge-v2.jpg",
-            article_url="https://www.nytimes.com/2016/09/09/briefing/north-korea-wells-fargo-serena-williams.html",
-            date_str="05-2001"
+            title="Ex-Louisiana Trooper Acquitted of Violating Civil Rights of Black Motorist",
+            abstract="The trooper beat Aaron Larry Bowman with a flashlight after a traffic stop in 2019. The case drew outrage after police body-camera footage of the encounter went public.",
+            img_url="https://static01.nyt.com/images/2023/08/03/multimedia/03xp-louisiana-jplq/03xp-louisiana-jplq-superJumbo.jpg",
+            article_url="https://www.nytimes.com/2023/08/03/us/jacob-brown-louisiana-state-trooper-acquitted.html",
+            date_str="August 2023",
         ),
-        FrontendArticle(
-            title="Inside the Party Switch that Blew Up North Carolina Politics",
-            abstract="Tricia Cotham, a Democrat who supported abortion rights, was encouraged to run for a state House seat by powerful Republicans. After she was elected, she joined them and delivered a G.O.P. supermajority.",
-            img_url="https://static01.nyt.com/images/2023/07/27/multimedia/00nat-cotham-01-fjmq/00nat-cotham-01-fjmq-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/us/inside-the-party-switch-that-blew-up-north-carolina-politics.html",
-            date_str="05-2001"
-        )
-    ),
-    (
-        FrontendArticle(
-            title="Out of the Loss of a Garden, Another Life Lesson",
-            abstract="When Joan Dye Gussow, nutritionist and matriarch of the eat-locally-think-globally food movement, lost her vegetable garden, she took the opportunity to reinvent it.",
-            img_url="https://static01.nyt.com/images/2010/08/19/garden/19gardenspan-1/jpGARDEN1-articleLarge.jpg",
-            article_url="https://www.nytimes.com/2010/08/19/garden/19garden.html",
-            date_str="12-2002"
-        ),
-        FrontendArticle(
-            title="What Is It About Montecito?",
-            abstract="Trying to understand the allure of a place that’s home to Oprah, the self-exiled royals, a celebrity juicer, Katy Perry’s dad — and the New American Dream.",
-            img_url="https://static01.nyt.com/images/2023/07/30/multimedia/30MONTECITO-1-kzch/30MONTECITO-1-kzch-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/style/montecito-california.html",
-            date_str="12-2002"
-        )
-    ),
-    (
-        FrontendArticle(
-            title="Rakesses, Writers, Activists and Dukes, All of Them Hot",
-            abstract="Does the state of the world have you desperate for a happy ending? Pick up a romance novel.",
-            img_url="https://static01.nyt.com/images/2020/05/31/books/review/31Romance-GREEN/31Romance-GREEN-articleLarge-v3.jpg",
-            article_url="https://www.nytimes.com/interactive/2020/books/romance-novels-summer.html",
-            date_str="02-2001"
-        ),
-        FrontendArticle(
-            title="Dogs Die From Heat-Related Injuries on Their Way to Police Training",
-            abstract="The German shepherds were en route from Chicago to Michigan City, Ind., when the air-conditioning unit in the vehicle in which they were being transported failed, the police said.",
-            img_url="https://static01.nyt.com/images/2023/07/30/multimedia/30xp-dogs-gkfw/30xp-dogs-gkfw-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/us/heat-police-dogs-dead-indiana.html",
-            date_str="02-2001"
-        )
-    ),
-    (
-        FrontendArticle(
-            title="For Field Hockey, an Encouraging First Game",
-            abstract="The United States field hockey team lost its first game to Germany, but its athleticism and aggressive attack were impressive.",
-            img_url="None",
-            article_url="https://london2012.blogs.nytimes.com/2012/07/30/for-field-hockey-an-encouraging-first-game/",
-            date_str="08-2004"
-        ),
-        FrontendArticle(
-            title="The Lost Art of Fouling the Ball Off (on Purpose)",
-            abstract="Spoiling difficult pitches to stay alive was equal parts strategy and party trick. The modern approach to hitting has left it behind.",
-            img_url="https://static01.nyt.com/images/2023/07/28/multimedia/28mlb-foul-balls-promo-fvkq/28mlb-foul-balls-promo-fvkq-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/28/sports/baseball/foul-balls.html",
-            date_str="08-2004"
-        )
-    ),
-    (
-        FrontendArticle(
-            title="Who’s Minding the Schools?",
-            abstract="Are new standards really leveling the playing field? Or is the game prearranged so that many, if not most, of the players will fail?",
-            img_url="https://static01.nyt.com/images/2013/06/09/sunday-review/09CORE/09CORE-thumbWide-v2.jpg",
-            article_url="https://www.nytimes.com/2013/06/09/opinion/sunday/the-common-core-whos-minding-the-schools.html",
-            date_str="06-2001"
-        ),
-        FrontendArticle(
-            title="How Trump Could Wreck Things for Republicans in 2024",
-            abstract="The governor’s race in New Hampshire offers a window into the ways Trump could complicate the lives of down-ballot G.O.P. candidates.",
-            img_url="https://static01.nyt.com/images/2023/07/30/multimedia/30cottle-mtlz/30cottle-mtlz-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/opinion/donald-trump-new-hampshire.html",
-            date_str="06-2001"
-        )
-    ),
-    (
-        FrontendArticle(
-            title="Senate Report Details Jan. 6 Intelligence and Law Enforcement Failures",
-            abstract="The report by Democrats provided the most comprehensive picture to date of how federal officials missed, downplayed or failed to act on multiple threats of and plans for violence.",
-            img_url="https://static01.nyt.com/images/2023/06/27/multimedia/27dc-Jan6-gzhw/27dc-Jan6-gzhw-articleLarge.jpg",
-            article_url="https://www.nytimes.com/2023/06/27/us/politics/jan-6-report-senate.html",
-            date_str="10-2004"
-        ),
-        FrontendArticle(
-            title="What ‘Oppenheimer’ Doesn’t Tell You About the Trinity Test",
-            abstract="As a new generation of Americans learns about the world’s first nuclear test, the people who lived through it are being left out of the story again.",
-            img_url="https://static01.nyt.com/images/2023/07/31/opinion/23cordova-1/23cordova-1-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/opinion/international-world/oppenheimer-nuclear-bomb-cancer.html",
-            date_str="10-2004"
-        )
-    ),
-    (
-        FrontendArticle(
-            title="What Can I Do to Lighten Up Thanksgiving?",
-            abstract="There are various ways to approach this question. If you’re talking about the food, it’s possible that your crusade is a hopeless one, sort of like striving to snuff out the noise of fireworks on the 4th of July or giving kids homemade agave-nectar granola clusters on Halloween. But if, instead, your question has more to do with bringing a breeze of social and mental lightness to the holiday proceedings, we’d like to recommend the “Thin Man” approach.",
-            img_url="None",
-            article_url="https://dinersjournal.blogs.nytimes.com/2011/11/23/what-can-i-do-to-lighten-up-thanksgiving/",
-            date_str="04-2004"
-        ),
-        FrontendArticle(
-            title="It Was Never Just About the Butterflies",
-            abstract="Make very little of yourself if you wish to see clearly. Shut up, deeply, if you wish to hear.",
-            img_url="https://static01.nyt.com/images/2023/07/30/opinion/30hyde/30hyde-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/opinion/butterfly-hunting-attention.html",
-            date_str="04-2004"
-        )
-    ),
-    (
-        FrontendArticle(
-            title="Bombing at Hotel in Pakistan Kills at Least 40",
-            abstract="A huge truck bombing at Islamabad’s Marriott Hotel was one of the worst acts of terrorism in Pakistan’s history.",
-            img_url="https://static01.nyt.com/images/2008/09/21/world/21pakistan.xlarge1.jpg",
-            article_url="https://www.nytimes.com/2008/09/21/world/asia/21islamabad.html",
-            date_str="03-2004"
-        ),
-        FrontendArticle(
-            title="At Least 43 Killed in Blast at Political Rally in Pakistan",
-            abstract="An explosion at a political rally on Sunday in northwest Pakistan killed dozens of people and injured 200 more, officials said, the latest sign of the deteriorating security situation in Pakistan, where some militant groups have become more active over the past two years.",
-            img_url="https://static01.nyt.com/images/2023/07/30/multimedia/30Pakistan-04-jlzg/30Pakistan-04-jlzg-superJumbo.jpg",
-            article_url="https://www.nytimes.com/2023/07/30/world/asia/pakistan-rally-explosion.html",
-            date_str="03-2004"
-        )
     ),
 ]
 
+
 @app.route("/")
 def index():
-    return render_template("index.html", results=results * 10)
+    return render_template("index.html", results=results)
