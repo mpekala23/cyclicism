@@ -19,14 +19,14 @@
     <div class="">
       <div class="snap-y snap-mandatory h-screen overflow-scroll scroll-smooth">
         <div class="sm:p-8 sm:ml-8 md:max-w-screen-sm md:ml-16 lg:max-w-screen-md lg:ml-32 xl:max-w-screen-md xl:ml-64">
-          <div class="snap-start h-screen flex flex-col justify-center p-8">
+          <div id="top" class="overflow-clip snap-start h-screen flex flex-col justify-center p-8">
+            <a href="https://developer.nytimes.com">
+              <img class="w-32" src="https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344" />
+            </a>
             <div class="flex flex-col justify-center flex-grow">
-              <p id="top" class="text-3xl mb-2">CYCLICISM <span class="text-lg">(ˈsɪklɪˌsɪzəm)</span></p>
+              <p class="text-3xl mb-2">CYCLICISM <span class="text-lg">(ˈsɪklɪˌsɪzəm)</span></p>
               <p class="text-xl">The belief that history repeats itself</p>
             </div>
-            <a href="https://developer.nytimes.com">
-              <img class="w-48" src="https://developer.nytimes.com/files/poweredby_nytimes_200a.png?v=1583354208344" />
-            </a>
           </div>
           <div class="snap-start h-screen flex flex-col justify-center p-8">
             <p class="text-2xl">Sure, the news is sensational.</p>
@@ -56,9 +56,9 @@
             <div class="h-1/2 p-8 flex flex-col">
               <p class="italic text-md mb-2">A recent article from {{new_article.date_str}}</h1>
               <a class="hover:cursor-pointer" href="{{new_article.article_url}}" target="_blank">
-                <p class="font-bold text-2xl">{{new_article.title}}</h1>
+                <p class="font-bold text-xl sm:text-2xl">{{new_article.title}}</h1>
               </a>
-              <p class="text-md mt-2 mb-4">{{new_article.abstract}}</p>
+              <p class="text-sm sm:text-md mt-2 mb-4">{{new_article.abstract}}</p>
               {% if new_article.img_url %}
               <div class="flex flex-grow overflow-hidden">
                 <img class="w-full h-full object-scale-down" src="{{new_article.img_url}}" alt="" /> 
@@ -72,9 +72,9 @@
             <div class="h-1/2 p-8 flex flex-col">
               <p class="italic text-md mb-2">An old article from {{old_article.date_str}}</h1>
               <a class="hover:cursor-pointer" href="{{old_article.article_url}}" target="_blank">
-                <p class="font-bold text-2xl">{{old_article.title}}</h1>
+                <p class="font-bold text-xl sm:text-2xl">{{old_article.title}}</h1>
               </a>
-              <p class="text-md mt-2 mb-4">{{old_article.abstract}}</p>
+              <p class="text-sm sm:text-md mt-2 mb-4">{{old_article.abstract}}</p>
               {% if old_article.img_url %}
               <div class="flex flex-grow overflow-hidden">
                 <img class="w-full h-full object-scale-down" src="{{old_article.img_url}}" alt="" /> 
@@ -89,16 +89,16 @@
           {% endfor %}
         </div>
         <div class="sm:p-8 sm:ml-8 md:max-w-screen-sm md:ml-16 lg:max-w-screen-md lg:ml-32 xl:max-w-screen-md xl:ml-64">
-          <div class="snap-start h-screen flex flex-col justify-center p-8 overflow-auto">
-            <div class="flex flex-col justify-center flex-grow pt-16">
-              <p id="bottom" class="text-3xl mb-2">About</p>
+          <div id="bottom" class="snap-start h-screen flex flex-col justify-center p-8 overflow-auto">
+            <div class="flex flex-col justify-center flex-grow pt-4">
+              <p class="text-2xl mb-2">About</p>
               <p class="text-md">
                 This website was created by applying a <a target="_blank" class="underline" href="https://www.sbert.net/#">sentence transformer</a> to
                 the headline and abstract of every article published by <span class="italic">The New York Times</span> between January 1st, 2001 and
                 December 31st, 2005. Every six hours, the page is refreshed by fetching the currently trending articles and applying the same
                 transformation. Similarity is then approximated using <a target="_blank" class="underline" href="https://github.com/spotify/annoy">annoy indexes</a>.
               </p>
-              <p class="text-3xl mt-8 mb-2">Why 2001-2005?</p>
+              <p class="text-2xl mt-8 mb-2">Why 2001-2005?</p>
               <p class="text-md">
                 I (the omniscent narrator) was born in 2001, and I wanted to see what the world was like when I was
                 too young to open a newspaper and go, <span class="italic">"Huh."</span>
@@ -113,14 +113,14 @@
             </div>
           </div>
           <div class="snap-start h-screen flex flex-col justify-center p-8 overflow-auto">
-            <div class="flex flex-col justify-center flex-grow pt-16">
-              <p id="bottom" class="text-3xl mb-2">OBLIGATORY BLOG LINK</p>
+            <div class="flex flex-col justify-center flex-grow pt-4">
+              <p class="text-2xl mb-2">OBLIGATORY PERSONAL WEBSITE LINK</p>
               <p class="text-md">
                 <a target="_blank" href="https://mark-pekala.dev" class="underline">Check it out.</a>
               </p>
-              <p class="text-3xl mt-8 mb-2">But... who are you?</p>
+              <p class="text-2xl mt-8 mb-2">But... who are you?</p>
               <p class="text-md">
-                I'm <a target="_blank" href="https://mark-pekala.dev" class="underline">Mark</a> 🖤, a student at Harvard studying math and
+                I'm <a target="_blank" href="https://www.linkedin.com/in/cargo-run/" class="underline">Mark</a> 🖤, a student at Harvard studying math and
                 computer science. I like data structures and algorithms and have a bit too much free time.
                 Oh, and I'm probably going to graduate soon, if you know any cool places to work. ;)
               </p>

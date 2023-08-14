@@ -1,5 +1,5 @@
 from annoy import AnnoyIndex
-from gen import get_vec, EMBED_LENGTH
+from utils.gen import get_vec, EMBED_LENGTH
 from schema import DBManager
 from dotenv import load_dotenv
 from pynytimes import NYTAPI

@@ -1,9 +1,9 @@
 """
 The goal of this script is to run our analysis and produce a new
-`api.py` file which will be used to serve our website. This involves:
+`index.html` file which will be used to serve our website. This involves:
 - Fetching todays news articles (say top 10)
 - Running our analysis on them and finding the most similar from our models
-- Generating a new `api.py` file with the results
+- Generating a new `index.html` file with the results
 """
 print("Houeskeeping...")
 import numpy as np
@@ -16,10 +16,23 @@ from pynytimes import NYTAPI
 from annoy import AnnoyIndex
 from tqdm import tqdm
 from util import month_to_str, str_to_month
-from gen import EMBED_LENGTH, get_vec
 from schema import DBManager, Article
 from typing import Union, NamedTuple
 from sentence_transformers import SentenceTransformer
+from google_images_search import GoogleImagesSearch
+import random
+from flask import Flask, render_template
+import logging
+import time
+
+# Setup quality-of-life logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    filename=f"/Users/mork/Desktop/projects/cyclicism/logs/{int(time.time())}.log",
+    filemode="a",
+)
+logger = logging.getLogger(__name__)
 
 # Housekeeping
 load_dotenv()
@@ -28,6 +41,8 @@ API_KEY = os.getenv("NYT_KEY")
 DB_FILE = "meta.db"
 
 nyt = NYTAPI(API_KEY or "", parse_dates=True)
+GOOGLE_KEY = os.getenv("GOOGLE_KEY") or ""
+gis = GoogleImagesSearch(GOOGLE_KEY, "a708aeeac07f04808")
 
 model = SentenceTransformer("sentence-transformers/sentence-t5-base")
 EMBED_LENGTH = 768
@@ -77,25 +92,13 @@ class FrontendArticle(NamedTuple):
     article_url: str
     date_str: str
 
-    def to_api_str(self) -> str:
-        """
-        Convert this article to a string that can be used in the api
-        """
-        return f"""FrontendArticle(
-            title="{self.title}",
-            abstract="{self.abstract}",
-            img_url="{self.img_url}",
-            article_url="{self.article_url}",
-            date_str="{self.date_str}"
-        )"""
-
 
 # Load today's news
-print("Getting top stories...")
+logger.info("Getting top stories...")
 top_stories = nyt.top_stories()
 
 # Get all of the annoy indexes into memory
-print("Loading annoy indexes...")
+logger.info("Loading annoy indexes...")
 start_date = datetime(2001, 1, 1)
 end_date = datetime(2005, 12, 31)
 
@@ -120,76 +123,69 @@ while date < end_date:
     date += relativedelta(months=1)
 
 # Load the database
-print("Loading database...")
+logger.info("Loading database...")
 dbman = DBManager(DB_FILE)
 
 # Run the analysis
-print("Showing crazy cynical things...")
+logger.info("Showing crazy cynical things...")
 results: list[tuple[FrontendArticle, FrontendArticle]] = []
 
-for story in tqdm(top_stories[:10]):
-    min_article: Union[Article, None] = None
-    min_date = ""
-    min_dist = float("inf")
-    title = story["title"]
-    abstract = story["abstract"]
-    for date, aix in month_to_aix.items():
-        abs_emb = get_vec(abstract)
-        head_emb = get_vec(title)
-        article, dist = get_closest_for_date(abs_emb, head_emb, date)
-        if article is None:
+try:
+    for story in tqdm(top_stories[:15]):
+        min_article: Union[Article, None] = None
+        min_date = ""
+        min_dist = float("inf")
+        title = story["title"]
+        abstract = story["abstract"]
+        for date, aix in month_to_aix.items():
+            abs_emb = get_vec(abstract)
+            head_emb = get_vec(title)
+            article, dist = get_closest_for_date(abs_emb, head_emb, date)
+            if article is None:
+                continue
+            if dist < min_dist:
+                min_dist = dist
+                min_article = article
+                min_date = date
+        if min_article is None:
             continue
-        if dist < min_dist:
-            min_dist = dist
-            min_article = article
-            min_date = date
-    if min_article is None:
-        continue
-    old_article = FrontendArticle(
-        title=min_article.headline,
-        abstract=min_article.abstract,
-        img_url=min_article.img_url if min_article.img_url != "None" else None,
-        article_url=min_article.web_url,
-        date_str=str_to_month(min_date).strftime("%B %Y"),
-    )
-    new_article = FrontendArticle(
-        title=story["title"],
-        abstract=story["abstract"],
-        img_url=story["multimedia"][0]["url"] if len(story["multimedia"]) > 0 else None,
-        article_url=story["url"],
-        date_str=story["created_date"].strftime("%B %Y"),
-    )
-    results.append((old_article, new_article))
+        _search_params = {
+            "q": min_article.headline,
+            "num": 5,
+            "fileType": "jpg",
+            "rights": "cc_publicdomain",
+            "safe": "active",  ##
+        }
+        gis.search(search_params=_search_params)
+        searched_imgs = gis.results()
+        old_img_url = min_article.img_url
+        if len(searched_imgs) > 0:
+            old_img_url = random.choice(searched_imgs).url
+        old_article = FrontendArticle(
+            title=min_article.headline,
+            abstract=min_article.abstract[:200],
+            img_url=old_img_url,
+            article_url=min_article.web_url,
+            date_str=str_to_month(min_date).strftime("%B %Y"),
+        )
+        new_article = FrontendArticle(
+            title=story["title"],
+            abstract=story["abstract"][:200],
+            img_url=story["multimedia"][0]["url"] if len(story["multimedia"]) > 0 else None,
+            article_url=story["url"],
+            date_str=story["created_date"].strftime("%B %Y"),
+        )
+        results.append((old_article, new_article))
+except Exception as e:
+    logger.warning(f"Exception: {e.args}")
 
-# Create a new api.py file for deployment
-print("Writing api.py...")
-with open("test_api.py", "w") as f:
-    results_str = "results = [\n"
-    for result in results:
-        results_str += "    (\n"
-        results_str += "        " + result[0].to_api_str() + ",\n"
-        results_str += "        " + result[1].to_api_str() + "\n"
-        results_str += "    ),\n"
-    results_str += "]\n"
-    f.write(
-        f"""# THIS IS AN AUTO-GENERATED FILE. DO NOT EDIT
-from flask import Flask, render_template
-from typing import Union, NamedTuple
+# Create a new index.html file for deployment
+logger.info("Writing index.html...")
 
 app = Flask(__name__)
 
+with open("index.html", "w") as fout, app.app_context(), app.test_request_context():
+    fout.write(render_template("index.html", results=results))
 
-class FrontendArticle(NamedTuple):
-    title: str
-    abstract: str
-    img_url: Union[str, None]
-    article_url: str
-    date_str: str
+logger.info("Pushing to git")
 
-
-{results_str}
-@app.route("/")
-def index():
-    return render_template("index.html", results=results)
-"""
-    )

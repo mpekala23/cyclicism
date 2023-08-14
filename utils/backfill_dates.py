@@ -1,3 +1,5 @@
+# I only need this file because I made stupid mistakes
+
 import schema
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
