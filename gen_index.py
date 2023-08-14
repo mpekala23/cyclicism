@@ -163,14 +163,14 @@ try:
             old_img_url = random.choice(searched_imgs).url
         old_article = FrontendArticle(
             title=min_article.headline,
-            abstract=min_article.abstract[:200],
+            abstract=min_article.abstract[:176],
             img_url=old_img_url,
             article_url=min_article.web_url,
             date_str=str_to_month(min_date).strftime("%B %Y"),
         )
         new_article = FrontendArticle(
             title=story["title"],
-            abstract=story["abstract"][:200],
+            abstract=story["abstract"][:176],
             img_url=story["multimedia"][0]["url"] if len(story["multimedia"]) > 0 else None,
             article_url=story["url"],
             date_str=story["created_date"].strftime("%B %Y"),
@@ -188,4 +188,4 @@ with open("index.html", "w") as fout, app.app_context(), app.test_request_contex
     fout.write(render_template("index.html", results=results))
 
 logger.info("Pushing to git")
-
+os.system(f"cd /Users/mork/Desktop/projects/cyclicism && git add . && git commit -m 'update at {int(time.time())}' && git push")
