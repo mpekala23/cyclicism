@@ -130,8 +130,8 @@ dbman = DBManager(DB_FILE)
 logger.info("Showing crazy cynical things...")
 results: list[tuple[FrontendArticle, FrontendArticle]] = []
 
-try:
-    for story in tqdm(top_stories[:15]):
+for story in tqdm(top_stories[:15]):
+    try:
         min_article: Union[Article, None] = None
         min_date = ""
         min_dist = float("inf")
@@ -176,8 +176,8 @@ try:
             date_str=story["created_date"].strftime("%B %Y"),
         )
         results.append((old_article, new_article))
-except Exception as e:
-    logger.warning(f"Exception: {e.args}")
+    except Exception as e:
+        logger.warning(f"Exception: {e.args}")
 
 # Create a new index.html file for deployment
 logger.info("Writing index.html...")
