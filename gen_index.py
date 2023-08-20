@@ -153,8 +153,7 @@ for story in tqdm(top_stories[:15]):
             "q": min_article.headline,
             "num": 5,
             "fileType": "jpg",
-            "rights": "cc_publicdomain",
-            "safe": "active",  ##
+            "safe": "active",
         }
         gis.search(search_params=_search_params)
         searched_imgs = gis.results()
