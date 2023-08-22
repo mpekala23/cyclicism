@@ -99,28 +99,32 @@ top_stories = nyt.top_stories()
 
 # Get all of the annoy indexes into memory
 logger.info("Loading annoy indexes...")
-start_date = datetime(2001, 1, 1)
-end_date = datetime(2005, 12, 31)
+try:
+    start_date = datetime(2001, 1, 1)
+    end_date = datetime(2005, 12, 31)
 
-month_to_aix = {}
-month_to_hix = {}
-month_to_pix = {}
-date = start_date
-while date < end_date:
-    mstr = month_to_str(date)
-    aix_file = f"models/abs/a_{mstr}.ann"
-    hix_file = f"models/head/h_{mstr}.ann"
-    pix_file = f"models/par/p_{mstr}.ann"
-    aix = AnnoyIndex(EMBED_LENGTH, "angular")
-    hix = AnnoyIndex(EMBED_LENGTH, "angular")
-    pix = AnnoyIndex(EMBED_LENGTH, "angular")
-    aix.load(aix_file)
-    hix.load(hix_file)
-    pix.load(pix_file)
-    month_to_aix[mstr] = aix
-    month_to_hix[mstr] = hix
-    month_to_pix[mstr] = pix
-    date += relativedelta(months=1)
+    month_to_aix = {}
+    month_to_hix = {}
+    month_to_pix = {}
+    date = start_date
+    while date < end_date:
+        mstr = month_to_str(date)
+        aix_file = f"/Users/mork/Desktop/projects/cyclicism/models/abs/a_{mstr}.ann"
+        hix_file = f"/Users/mork/Desktop/projects/cyclicism/models/head/h_{mstr}.ann"
+        pix_file = f"/Users/mork/Desktop/projects/cyclicism/models/par/p_{mstr}.ann"
+        aix = AnnoyIndex(EMBED_LENGTH, "angular")
+        hix = AnnoyIndex(EMBED_LENGTH, "angular")
+        pix = AnnoyIndex(EMBED_LENGTH, "angular")
+        aix.load(aix_file)
+        hix.load(hix_file)
+        pix.load(pix_file)
+        month_to_aix[mstr] = aix
+        month_to_hix[mstr] = hix
+        month_to_pix[mstr] = pix
+        date += relativedelta(months=1)
+except Exception as e:
+    logger.error(e.args)
+    x = 1/0.0
 
 # Load the database
 logger.info("Loading database...")
@@ -163,7 +167,7 @@ for story in tqdm(top_stories[:15]):
         old_article = FrontendArticle(
             title=min_article.headline,
             abstract=min_article.abstract[:176],
-            img_url=old_img_url,
+            img_url=None, #old_img_url
             article_url=min_article.web_url,
             date_str=str_to_month(min_date).strftime("%B %Y"),
         )
@@ -184,7 +188,7 @@ logger.info("Writing index.html...")
 app = Flask(__name__)
 
 with open("index.html", "w") as fout, app.app_context(), app.test_request_context():
-    fout.write(render_template("index.html", results=results))
+    fout.write(render_template("index.html", results=results, last_updated=datetime.now().strftime("%m-%d-%Y, %H:%M")))
 
 logger.info("Pushing to git")
 os.system(f"cd /Users/mork/Desktop/projects/cyclicism && git add . && git commit -m 'update at {int(time.time())}' && git push")
