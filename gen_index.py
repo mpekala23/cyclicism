@@ -134,7 +134,10 @@ dbman = DBManager(DB_FILE)
 logger.info("Showing crazy cynical things...")
 results: list[tuple[FrontendArticle, FrontendArticle]] = []
 
+ix = 0
 for story in tqdm(top_stories[:15]):
+    logger.info(ix)
+    ix += 1
     try:
         min_article: Union[Article, None] = None
         min_date = ""
@@ -187,7 +190,7 @@ logger.info("Writing index.html...")
 
 app = Flask(__name__)
 
-with open("index.html", "w") as fout, app.app_context(), app.test_request_context():
+with open("/Users/mork/Desktop/projects/cyclicism/index.html", "w") as fout, app.app_context(), app.test_request_context():
     fout.write(render_template("index.html", results=results, last_updated=datetime.now().strftime("%m-%d-%Y, %H:%M")))
 
 logger.info("Pushing to git")
