@@ -137,6 +137,7 @@ results: list[tuple[FrontendArticle, FrontendArticle]] = []
 ix = 0
 for story in tqdm(top_stories[:15]):
     logger.info(ix)
+    logger.info(results)
     ix += 1
     try:
         min_article: Union[Article, None] = None
